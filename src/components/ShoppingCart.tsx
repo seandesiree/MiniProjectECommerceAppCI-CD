@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeFromCart, clearCart } from '../../store';
+import { removeFromCart, clearCart } from './Store';
 
 const ShoppingCart = () => {
   const cartItems = useSelector(state => state.cart.items);
@@ -13,7 +13,7 @@ const ShoppingCart = () => {
     alert('Thank you for your purchase!');
   };
 
-  const totalAmount = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+  const totalAmount = cartItems.reduce((total:any, item:any) => total + item.price * item.quantity, 0);
 
   return (
     <>

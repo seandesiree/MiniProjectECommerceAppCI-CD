@@ -1,11 +1,11 @@
 
 import React, { useState } from 'react';
 
-const Login = ({ onLogin }) => {
+const Login = ({ onLogin }:{onLogin:any}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e:any) => {
     e.preventDefault();
     const response = await fetch('https://fakestoreapi.com/auth/login', {
       method: 'POST',

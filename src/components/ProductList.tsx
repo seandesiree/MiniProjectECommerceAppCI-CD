@@ -2,7 +2,9 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useDispatch } from 'react-redux';
-import { addToCart } from '../../store';
+import { addToCart } from './Store';
+
+type Product = { id: string; title: string; price: number; };
 
 const fetchProducts = async () => {
   const response = await fetch('https://fakestoreapi.com/products');
@@ -10,10 +12,10 @@ const fetchProducts = async () => {
 };
 
 const ProductList = () => {
-  const { data: products = [] } = useQuery(['products'], fetchProducts);
+  const { data: products = [], isLoading, error } = useQuery<Product[], Error>(['products'], fetchProducts);
   const dispatch = useDispatch();
 
-  const handleAddToCart = (product) => {
+  const handleAddToCart = (product:any) => {
     dispatch(addToCart({ ...product, quantity: 1 }));
   };
 

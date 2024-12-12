@@ -6,7 +6,7 @@ import React, { useState } from 'react';
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e:any) => {
       e.preventDefault();
       const response = await fetch('https://fakestoreapi.com/users', {
         method: 'POST',
