@@ -1,10 +1,17 @@
-
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeFromCart, clearCart } from './Store';
 
-const ShoppingCart = () => {
-  const cartItems = useSelector(state => state.cart.items);
+
+type CartItem = {
+  id: string;
+  title: string;
+  price: number;
+  quantity: number;
+};
+
+const ShoppingCart: React.FC = () => {
+  const cartItems = useSelector<{ cart: { items: CartItem[] } }, CartItem[]>(state => state.cart.items);
   const dispatch = useDispatch();
 
   const handleCheckout = () => {
@@ -13,7 +20,8 @@ const ShoppingCart = () => {
     alert('Thank you for your purchase!');
   };
 
-  const totalAmount = cartItems.reduce((total:any, item:any) => total + item.price * item.quantity, 0);
+
+  const totalAmount = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
 
   return (
     <>
@@ -33,3 +41,5 @@ const ShoppingCart = () => {
 };
 
 export default ShoppingCart;
+
+
