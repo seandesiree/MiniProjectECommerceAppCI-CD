@@ -1,7 +1,7 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useDispatch } from 'react-redux';
-import { addToCart } from './Store';
+import { addToCart } from '././Store';
 
 
 type Product = { 

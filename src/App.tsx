@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import store from './store';
-import Login from './components/User/Login';
-import ProductList from './components/Product/ProductList';
-import ShoppingCart from './components/Cart/ShoppingCart';
+import store from './components/Store';
+import Login from './components/Login';
+import ProductList from './components/ProductList';
+import ShoppingCart from './components/ShoppingCart';
 import './i18n';
 import { I18nextProvider } from 'react-i18next';
 import i18n from './i18n';
@@ -16,11 +16,9 @@ const App = () => {
     <I18nextProvider i18n={i18n}>
       <Provider store={store}>
         <Router>
-          <Switch>
-            <Route path="/login" component={() => <Login onLogin={setUser} />} />
-            {user ? <Route path="/products" component={ProductList} /> : <Redirect to="/login" />}
-            <Route path="/cart" component={ShoppingCart} />
-          </Switch>
+            <Route path="/login" Component={() => <Login onLogin={setUser} />} />
+            {user ? <Route path="/products" Component={ProductList} /> : <Navigate to="/login" />}
+            <Route path="/cart" Component={ShoppingCart} />  
         </Router>
       </Provider>
     </I18nextProvider>
