@@ -16,13 +16,14 @@ const App = () => {
     <I18nextProvider i18n={i18n}>
       <Provider store={store}>
         <Router>
-            <Route path="/login" Component={() => <Login onLogin={setUser} />} />
-            {user ? <Route path="/products" Component={ProductList} /> : <Navigate to="/login" />}
-            <Route path="/cart" Component={ShoppingCart} />  
+          <Routes>
+            <Route path="/login" element={<Login onLogin={setUser} />} />
+            <Route path="/products" element={user ? <ProductList /> : <Navigate to="/login" />} />
+            <Route path="/cart" element={<ShoppingCart />} /> 
+          </Routes>
         </Router>
       </Provider>
     </I18nextProvider>
   );
-};
-
+}
 export default App;
