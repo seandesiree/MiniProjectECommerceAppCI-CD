@@ -44,7 +44,7 @@ const ProductList: React.FC = () => {
           <li key={product.id}>
             <h2>{product.title}</h2>
             <p>${product.price}</p>
-            <img src={product.image} alt={`Image of ${product.title}`} />
+            <img src={product.image} alt={`${product.title}`} />
             <button onClick={() => handleAddToCart(product)}>Add to Cart</button>
           </li>
         ))}
